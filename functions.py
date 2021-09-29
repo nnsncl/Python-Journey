@@ -19,7 +19,7 @@ second = [10.75, 9.50]
 full = first + second
 
 # Sort full in descending order: full_sorted
-full_sorted = sorted(full, reverse = True)
+full_sorted = sorted(full, reverse=True)
 
 # Print out full_sorted
 print(full_sorted)
