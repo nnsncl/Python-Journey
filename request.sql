@@ -41,8 +41,10 @@ SELECT prenom, nom, naissance FROM membres WHERE YEAR(naissance) >= 1977 AND YEA
 SELECT prenom, nom, naissance FROM membres WHERE YEAR(naissance) BETWEEN 1977 AND 1983 ORDER BY naissance, nom;
 
 SELECT MAX(gross) FROM films WHERE release_year BETWEEN 2000 AND 2012
-SELECT AVG(duration / 60.0) AS avg_duration_hours FROM films
-
+SELECT AVG(duration) / 60.0 AS avg_duration_hours FROM films
+SELECT MAX(release_year) - MIN(release_year) AS difference FROM films
+SELECT COUNT(deathdate) * 100.0 / COUNT(*) AS percentage_dead FROM people
+SELECT (MAX(release_year) - MIN(release_year)) / 10.0 AS number_of_decades FROM films
 SELECT prenom, nom, DATE_FORMAT(naissance, '%d-%m-%Y') AS naissancesFR FROM membres ORDER BY naissance;
 
 
