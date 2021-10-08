@@ -40,7 +40,11 @@ SELECT prenom, nom, naissance FROM membres WHERE DAY(naissance) = 10;
 SELECT prenom, nom, naissance FROM membres WHERE YEAR(naissance) >= 1977 AND YEAR(naissance) <= 1983;
 SELECT prenom, nom, naissance FROM membres WHERE YEAR(naissance) BETWEEN 1977 AND 1983 ORDER BY naissance, nom;
 
+SELECT MAX(gross) FROM films WHERE release_year BETWEEN 2000 AND 2012
+SELECT AVG(duration / 60.0) AS avg_duration_hours FROM films
+
 SELECT prenom, nom, DATE_FORMAT(naissance, '%d-%m-%Y') AS naissancesFR FROM membres ORDER BY naissance;
+
 
 INSERT INTO membres (nom, prenom, email) VALUES ('Dodo', 'Do', 'dodo@dodo.do');
 INSERT INTO membres (nom, prenom, email)
