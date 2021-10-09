@@ -59,6 +59,21 @@ SELECT language, SUM(gross) FROM films GROUP BY language
 SELECT country, SUM(budget) FROM films GROUP BY country
 SELECT release_year, country, MAX(budget) FROM films GROUP BY release_year, country ORDER BY release_year, country
 SELECT country, release_year, MIN(gross) FROM films GROUP BY release_year, country ORDER BY country, release_year
+SELECT release_year FROM films GROUP BY release_year HAVING COUNT(release_year) > 200
+
+SELECT release_year, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross
+FROM films
+WHERE release_year > 1990
+GROUP BY release_year
+HAVING AVG(budget) > 60000000
+ORDER BY avg_gross DESC
+
+SELECT country, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross
+FROM films
+GROUP BY country
+HAVING COUNT(country) > 10
+ORDER BY country
+LIMIT 5
 
 INSERT INTO membres (nom, prenom, email) VALUES ('Dodo', 'Do', 'dodo@dodo.do');
 INSERT INTO membres (nom, prenom, email)
