@@ -46,6 +46,10 @@ SELECT MAX(release_year) - MIN(release_year) AS difference FROM films
 SELECT COUNT(deathdate) * 100.0 / COUNT(*) AS percentage_dead FROM people
 SELECT (MAX(release_year) - MIN(release_year)) / 10.0 AS number_of_decades FROM films
 SELECT prenom, nom, DATE_FORMAT(naissance, '%d-%m-%Y') AS naissancesFR FROM membres ORDER BY naissance;
+SELECT title FROM films WHERE release_year IN(2000, 2012) ORDER BY release_year
+SELECT * FROM films WHERE release_year != 2015 ORDER BY duration
+SELECT title, gross FROM films WHERE title LIKE 'M%' ORDER BY title
+SELECT imdb_score, film_id FROM reviews ORDER BY imdb_score DESC
 
 
 INSERT INTO membres (nom, prenom, email) VALUES ('Dodo', 'Do', 'dodo@dodo.do');
