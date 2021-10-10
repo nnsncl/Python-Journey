@@ -31,3 +31,18 @@ cars = pd.read_csv('cars.csv', index_col = 0)
 
 # Print out cars
 print(cars)
+
+# Print out country column as Pandas Series
+print(cars['country'])
+
+# Print out country column as Pandas DataFrame
+print(cars[['country']])
+
+# Print out DataFrame with country and drives_right columns
+print(cars[['country', 'drives_right']])
+
+# Print out first 3 observations
+print(cars[:3])
+
+# Print out fourth, fifth and sixth observation
+print(cars[3:6])
