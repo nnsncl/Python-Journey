@@ -50,3 +50,33 @@ europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin',
 # Iterate over europe
 for key, value in europe.items() :
     print("the capital of " + key + " is " + value) 
+
+
+# For loop over np_height
+for element in np_height :
+    print(str(element) + ' inches')
+
+# For loop over np_baseball
+for element in np.nditer(np_baseball) :
+    print(str(element))
+
+    # Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Iterate over rows of cars
+for lab, row in cars.iterrows() :
+    print(str(lab) + ': ' + str(row['cars_per_cap']))
+
+    cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Code for loop that adds COUNTRY column
+for lab, row in cars.iterrows() :
+    cars.loc[lab, "COUNTRY"] = row["country"].upper()
+
+# Print cars
+print(cars)
+
+# Use .apply(str.upper)
+cars["COUNTRY"] = cars["country"].apply(str.upper)
+print(cars)
