@@ -49,4 +49,4 @@ europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin',
           
 # Iterate over europe
 for key, value in europe.items() :
-    print("the capital of " + key + " is " + value)
+    print("the capital of " + key + " is " + value) 
