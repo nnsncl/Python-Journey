@@ -23,3 +23,11 @@ cars.index = row_labels
 
 # Print cars
 print(cars)
+
+
+
+# Import the cars.csv data: cars
+cars = pd.read_csv('cars.csv')
+
+# Print out cars
+print(cars)
