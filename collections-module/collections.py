@@ -9,3 +9,6 @@ station_count = Counter(stations)
 
 # Print the station_count
 print(station_count)
+
+# Find the 5 most common elements
+print(station_count.most_common(5))
