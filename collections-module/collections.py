@@ -27,3 +27,35 @@ for date, stop, riders in entries:
     
 # Print the ridership for '03/09/2016'
 print(ridership['03/09/2016'])
+
+# Import defaultdict
+from collections import defaultdict
+
+# Create a defaultdict with a default type of list: ridership
+ridership = defaultdict(list)
+
+# Iterate over the entries
+for date, stop, riders in entries:
+    # Use the stop as the key of ridership and append the riders to its value
+    ridership[stop].append(riders)
+    
+# Print the first 10 items of the ridership dictionary
+print(list(ridership.items())[:10])
+
+# Import OrderedDict from collections
+from collections import OrderedDict
+
+# Create an OrderedDict called: ridership_date
+ridership_date = OrderedDict()
+
+# Iterate over the entries
+for date, riders in entries:
+    # If a key does not exist in ridership_date, set it to 0
+    if date not in ridership_date:
+        ridership_date[date] = 0
+        
+    # Add riders to the date key in ridership_date
+    ridership_date[date] += riders
+    
+# Print the first 31 records
+print(list(ridership_date.items())[:31])
