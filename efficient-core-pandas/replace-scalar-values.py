@@ -37,3 +37,7 @@ start_time = time.time()
 names['Ethnicity'].replace(['ASIAN AND PACI','BLACK NON HISP', 'WHITE NON HISP'], ['ASIAN AND PACIFIC ISLANDER','BLACK NON HISPANIC','WHITE NON HISPANIC'], inplace=True)
 
 print("Time using .replace(): {} sec".format(time.time() - start_time))
+
+# Replace Royal flush or Straight flush to Flush
+poker_hands.replace({'Straight flush':'Flush', 'Royal flush':'Flush'}, inplace=True)
+print(poker_hands['Explanation'].head())
