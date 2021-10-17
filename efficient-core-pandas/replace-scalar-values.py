@@ -12,3 +12,13 @@ start_time = time.time()
 names['Gender'].replace('FEMALE', 'GIRL', inplace=True)
 
 print("Time using .replace(): {} sec".format(time.time() - start_time))
+
+start_time = time.time()
+
+# Replace all non-Hispanic ethnicities with 'NON HISPANIC' using loc
+names['Ethnicity'].loc[(names['Ethnicity'] == 'BLACK NON HISP') | 
+                      (names['Ethnicity'] == 'BLACK NON HISPANIC') | 
+                      (names['Ethnicity'] == 'WHITE NON HISP') | 
+                      (names['Ethnicity'] ==  'WHITE NON HISPANIC')] = 'NON HISPANIC'
+
+print("Time using .loc[]: sec".format(time.time() - start_time))
