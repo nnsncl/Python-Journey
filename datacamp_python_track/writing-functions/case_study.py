@@ -1,3 +1,7 @@
+
+from functools import wraps
+
+
 # Print the return type
 # You are debugging a package that you've been working on with your friends.\
 # Something weird is happening with the data being returned from one of your functions,\
@@ -55,7 +59,7 @@ print('foo() was called {} times.'.format(foo.count))
 
 
 
-from functools import wraps
+
 
 def add_hello(func):
   # Decorate wrapper() so that it keeps func()'s metadata
@@ -94,3 +98,11 @@ undecorated_time = t_end - t_start
 
 print('Decorated time: {:.5f}s'.format(decorated_time))
 print('Undecorated time: {:.5f}s'.format(undecorated_time))
+
+
+# Make print_sum() run 10 times with the run_n_times() decorator
+@run_n_times(10)
+def print_sum(a, b):
+  print(a + b)
+  
+print_sum(15, 20)
