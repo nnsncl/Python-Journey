@@ -57,10 +57,106 @@ foo()
 
 print('foo() was called {} times.'.format(foo.count))
 
+# HTML Tag generator
+
+def bold(func):
+  @wraps(func)
+  def wrapper(*args, **kwargs):
+    msg = func(*args, **kwargs)
+    return '<b>{}</b>'.format(msg)
+  return wrapper
+
+def italics(func):
+  @wraps(func)
+  def wrapper(*args, **kwargs):
+    msg = func(*args, **kwargs)
+    return '<i>{}</i>'.format(msg)
+  return wrapper
+
+def html(open_tag, close_tag):
+  def decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+      msg = func(*args, **kwargs)
+      return '{}{}{}'.format(open_tag, msg, close_tag)
+    # Return the decorated function
+    return wrapper
+  # Return the decorator
+  return decorator
+
+# Make hello() return bolded text
+@html('<b>', '</b>')
+def hello(name):
+  return 'Hello {}!'.format(name)
+  
+print(hello('Alice'))
+
+# Make goodbye() return italicized text
+@html('<i>', '</i>')
+def goodbye(name):
+  return 'Goodbye {}.'.format(name)
+  
+print(goodbye('Alice'))
+
+# Wrap the result of hello_goodbye() in <div> and </div>
+@html('<div>', '</div>')
+def hello_goodbye(name):
+  return '\n{}\n{}\n'.format(hello(name), goodbye(name))
+  
+print(hello_goodbye('Alice'))
+
+# Tag your functions
+# Tagging something means that you have given that thing one or more strings that act as labels.\
+# For instance, we often tag emails or photos so that we can search for them later.\
+# You've decided to write a decorator that will let you tag your functions with an arbitrary list of tags.\
+# You could use these tags for many things:
+
+# Adding information about who has worked on the function, so a user can look up who to ask if they run into trouble using it.
+# Labeling functions as "experimental" so that users know that the inputs and outputs might change in the future.
+# Marking any functions that you plan to remove in a future version of the code.
+# Etc.
+
+def tag(*tags):
+  # Define a new decorator, named "decorator", to return
+  def decorator(func):
+    # Ensure the decorated function keeps its metadata
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+      # Call the function being decorated and return the result
+      return func(*args, **kwargs)
+    wrapper.tags = tags
+    return wrapper
+  # Return the new decorator
+  return decorator
+
+@tag('test', 'this is a tag')
+def foo():
+  pass
+
+print(foo.tags)
+
+# Check the return type
+def returns(return_type):
+  # Complete the returns() decorator
+  def decorator(return_type):
+    def wrapper(return_type):
+      result = return_type
+      assert type(result) == return_type
+      return result
+    return wrapper
+  return decorator
+  
+@returns(dict)
+def foo(value):
+  return value
+
+try:
+  print(foo([1,2,3]))
+except AssertionError:
+  print('foo() did not return a dict!')
 
 
-
-
+# MISCS
 def add_hello(func):
   # Decorate wrapper() so that it keeps func()'s metadata
   @wraps(func)
@@ -125,49 +221,20 @@ def print_sum(a, b):
   
 print_sum(4, 100)
 
-
-def bold(func):
-  @wraps(func)
-  def wrapper(*args, **kwargs):
-    msg = func(*args, **kwargs)
-    return '<b>{}</b>'.format(msg)
+# Check the return type
+def returns_dict(func):
+  # Complete the returns_dict() decorator
+  def wrapper(func):
+    result = returns_dict
+    assert type(result) == dict
+    return result
   return wrapper
-
-def italics(func):
-  @wraps(func)
-  def wrapper(*args, **kwargs):
-    msg = func(*args, **kwargs)
-    return '<i>{}</i>'.format(msg)
-  return wrapper
-
-def html(open_tag, close_tag):
-  def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-      msg = func(*args, **kwargs)
-      return '{}{}{}'.format(open_tag, msg, close_tag)
-    # Return the decorated function
-    return wrapper
-  # Return the decorator
-  return decorator
-
-# Make hello() return bolded text
-@html('<b>', '</b>')
-def hello(name):
-  return 'Hello {}!'.format(name)
   
-print(hello('Alice'))
+@returns_dict
+def foo(value):
+  return value
 
-# Make goodbye() return italicized text
-@html('<i>', '</i>')
-def goodbye(name):
-  return 'Goodbye {}.'.format(name)
-  
-print(goodbye('Alice'))
-
-# Wrap the result of hello_goodbye() in <div> and </div>
-@html('<div>', '</div>')
-def hello_goodbye(name):
-  return '\n{}\n{}\n'.format(hello(name), goodbye(name))
-  
-print(hello_goodbye('Alice'))
+try:
+  print(foo([1,2,3]))
+except AssertionError:
+  print('foo() did not return a dict!')
