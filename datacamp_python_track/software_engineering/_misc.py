@@ -35,3 +35,49 @@ result = style_checker.check_files(['nay_pep8.py', 'yay_pep8.py'])
 
 # Print result of PEP 8 style check
 print(result.messages)
+
+
+import re
+
+def extract_0(text):
+    # match and extract dollar amounts from the text
+    return re.findall(r'\$\d+\.\d\d', text)
+
+def extract_1(text):
+    # return all matches to regex pattern
+    return re.findall(r'\$\d+\.\d\d', text)
+
+# Print the text
+print(text)
+
+# Print the results of the function with better commenting
+print(extract_0(text))
+
+# Run the help on all 4 functions
+help(goldilocks)
+help(rapunzel)
+help(mary)
+help(sleeping_beauty)
+
+# Execute the function with most complete docstring
+result = rapunzel()
+
+# Print the result
+print(result)
+
+
+# Complete the function's docstring
+def tokenize(text, regex=r'[a-zA-z]+'):
+  """Split text into tokens using a regular expression
+
+  :param text: text to be tokenized
+  :param regex: regular expression used to match tokens using re.findall 
+  :return: a list of resulting tokens
+
+  >>> tokenize('the rain in spain')
+  ['the', 'rain', 'in', 'spain']
+  """
+  return re.findall(regex, text, flags=re.IGNORECASE)
+
+# Print the docstring
+help(tokenize)
