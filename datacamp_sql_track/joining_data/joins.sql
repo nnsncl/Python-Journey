@@ -45,3 +45,13 @@ SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
   INNER JOIN economies AS e
     -- Match on country code and year
     ON c.code = e.code AND e.year = p.year;
+
+
+-- Select fields
+SELECT c.name as country, continent, l.name AS language, official
+  -- From countries (alias as c)
+  FROM countries AS c
+  -- Join to languages (as l)
+  INNER JOIN languages AS l
+    -- Match using code
+    USING (code)
