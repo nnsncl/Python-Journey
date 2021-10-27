@@ -135,3 +135,33 @@ FROM cities AS c1
     ON c1.country_code = c2.code
 -- Order by descending country code
 ORDER BY code DESC;
+
+/*
+Select country name AS country, the country's local name,
+the language name AS language, and
+the percent of the language spoken in the country
+*/
+SELECT c.name AS country, local_name, l.name AS language, percent
+-- From left table (alias as c)
+FROM countries AS c
+  -- Join to right table (alias as l)
+  INNER JOIN languages AS l
+    -- Match on fields
+    ON c.code = l.code
+-- Order by descending country
+ORDER BY country DESC;
+
+/*
+Select country name AS country, the country's local name,
+the language name AS language, and
+the percent of the language spoken in the country
+*/
+SELECT c.name AS country, local_name, l.name AS language, percent
+-- From left table (alias as c)
+FROM countries AS c
+  -- Join to right table (alias as l)
+  LEFT JOIN languages AS l
+    -- Match on fields
+    ON c.code = l.code
+-- Order by descending country
+ORDER BY country DESC;
