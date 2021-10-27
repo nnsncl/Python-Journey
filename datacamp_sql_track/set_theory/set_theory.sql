@@ -106,3 +106,33 @@ WHERE code IN
    WHERE region = 'Middle East')
 -- Order by name
 ORDER BY name;
+
+
+-- Select statement
+SELECT COUNT(*)
+  -- From countries
+  FROM countries
+-- Where continent is Oceania
+WHERE continent = 'Oceania';
+
+-- Select fields (with aliases)
+SELECT c1.code, c1.name, c2.basic_unit AS currency
+  -- From countries (alias as c1)
+  FROM countries AS c1
+  	-- Join with currencies (alias as c2)
+  	INNER JOIN currencies AS c2
+    -- Match on code
+    ON c1.code = c2.code
+-- Where continent is Oceania
+WHERE continent = 'Oceania';
+
+-- Select fields
+SELECT code, name
+  -- From Countries
+  FROM countries
+  -- Where continent is Oceania
+  WHERE continent = 'Oceania'
+  	-- And code not in
+  	AND code NOT IN
+  	-- Subquery
+  	(SELECT code FROM currencies);
