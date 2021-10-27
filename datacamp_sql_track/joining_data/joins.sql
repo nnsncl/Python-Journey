@@ -190,3 +190,12 @@ FROM countries AS c
 WHERE e.year = 2010
 -- Group by region
 GROUP BY region;
+
+SELECT cities.name AS city, urbanarea_pop, countries.name AS country,
+       indep_year, languages.name AS language, percent
+FROM languages
+  RIGHT JOIN countries
+    ON countries.code = languages.code
+  RIGHT JOIN cities
+    ON cities.country_code = countries.code
+ORDER BY city, language;
