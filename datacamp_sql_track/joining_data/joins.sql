@@ -165,3 +165,28 @@ FROM countries AS c
     ON c.code = l.code
 -- Order by descending country
 ORDER BY country DESC;
+
+-- Select name, region, and gdp_percapita
+SELECT name, region, gdp_percapita
+-- From countries (alias as c)
+FROM countries AS c
+  -- Left join with economies (alias as e)
+  LEFT JOIN economies AS e
+    -- Match on code fields
+    ON c.code = e.code
+-- Focus on 2010
+WHERE e.year = 2010;
+
+
+-- Select fields
+SELECT region, AVG(e.gdp_percapita) AS avg_gdp
+-- From countries (alias as c)
+FROM countries AS c
+  -- Left join with economies (alias as e)
+  LEFT JOIN economies AS e
+    -- Match on code fields
+    ON c.code = e.code
+-- Focus on 2010
+WHERE e.year = 2010
+-- Group by region
+GROUP BY region;
