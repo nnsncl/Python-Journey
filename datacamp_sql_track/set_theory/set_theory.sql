@@ -86,3 +86,23 @@ SELECT name
   FROM cities
 -- Order by ascending capital
 ORDER BY capital;
+
+-- Select code
+SELECT code 
+  -- From countries
+  FROM countries
+-- Where region is Middle East
+WHERE region = 'Middle East';
+
+-- Query from step 2
+SELECT DISTINCT name
+  FROM languages
+-- Where in statement
+WHERE code IN 
+  -- Query from step 1
+  -- Subquery
+  (SELECT code
+   FROM countries
+   WHERE region = 'Middle East')
+-- Order by name
+ORDER BY name;
