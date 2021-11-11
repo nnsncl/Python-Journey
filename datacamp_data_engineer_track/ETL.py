@@ -54,3 +54,11 @@ film_df_with_ratings = film_df.join(
 
 # Show the 5 first results
 print(film_df_with_ratings.show(5))
+
+
+# Load
+# Write the pandas DataFrame to parquet
+film_pdf.to_parquet("films_pdf.parquet")
+
+# Write the PySpark DataFrame to parquet
+film_sdf.write.parquet("films_sdf.parquet")
