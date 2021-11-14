@@ -12,3 +12,13 @@ print(engine.table_names())
 hpd_calls = pd.read_sql('hpd311calls', engine)
 # View the first few rows of data
 print(hpd_calls.head())
+
+# Create a SQL query to load the entire weather table
+query = """
+SELECT * 
+  FROM weather;
+"""
+# Load weather with the SQL query
+weather = pd.read_sql(query, engine)
+# View the first few rows of data
+print(weather.head())
