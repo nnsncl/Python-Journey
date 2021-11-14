@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+from pandas.io.json import json_normalize
 import matplotlib.pyplot as plt
 
 
@@ -49,4 +50,13 @@ response = requests.get(api_url,
 data = response.json()
 # Load "businesses" values to a data frame and print head
 cafes = pd.DataFrame(data["businesses"])
+print(cafes.head())
+
+
+# Isolate the JSON data from the API response
+data = response.json()
+# Flatten business data into a data frame, replace separator
+cafes = json_normalize(data["businesses"],
+             sep='_')
+# View data
 print(cafes.head())
