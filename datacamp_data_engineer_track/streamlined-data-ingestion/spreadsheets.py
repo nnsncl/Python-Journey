@@ -17,3 +17,13 @@ survey_responses = pd.read_excel("fcc_survey_headers.xlsx",
 
 # View the names of the columns selected
 print(survey_responses.columns)
+
+
+# Create df from second worksheet by referencing its position
+responses_2017 = pd.read_excel("fcc_survey.xlsx",
+                               sheetname=1)
+
+# Graph where people would like to get a developer job
+job_prefs = responses_2017.groupby("JobPref").JobPref.count()
+job_prefs.plot.barh()
+plt.show()
