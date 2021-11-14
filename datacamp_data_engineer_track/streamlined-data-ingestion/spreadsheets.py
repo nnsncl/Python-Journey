@@ -21,7 +21,7 @@ print(survey_responses.columns)
 
 # Create df from second worksheet by referencing its position
 responses_2017 = pd.read_excel("fcc_survey.xlsx",
-                               sheetname=1)
+                               sheet_name=1)
 
 # Graph where people would like to get a developer job
 job_prefs = responses_2017.groupby("JobPref").JobPref.count()
