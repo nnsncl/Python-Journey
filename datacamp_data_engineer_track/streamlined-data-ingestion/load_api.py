@@ -1,10 +1,9 @@
-# Load pandas as pd
+import requests
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load the daily report to a data frame
 pop_in_shelters = pd.read_json('dhs_daily_report.json')
-
-# View summary stats about pop_in_shelters
 print(pop_in_shelters.describe())
 
 try:
@@ -20,3 +19,18 @@ try:
 
 except ValueError:
     print("pandas could not parse the JSON.")
+
+
+api_url = "https://api.yelp.com/v3/businesses/search"
+# Get data about NYC cafes from the Yelp API
+response = requests.get(api_url, 
+                headers=headers, 
+                params=params)
+
+# Extract JSON data from the response
+data = response.json()
+# Load data to a data frame
+cafes = pd.DataFrame(data['businesses'])
+
+# View the data's dtypes
+print(cafes.dtypes)
