@@ -21,3 +21,30 @@ data = pd.read_csv("vt_tax_data_2016.csv", usecols=cols)
 
 # View counts of dependents and tax returns by income level
 print(data.groupby("agi_stub").sum())
+
+# Create data frame of next 500 rows with labeled columns
+vt_data_next500 = pd.read_csv("vt_tax_data_2016.csv", 
+                       		  nrows=500,
+                       		  skiprows=500,
+                       		  header=None,
+                       		  names=list(vt_data_first500))
+
+# View the Vermont data frames to confirm they're different
+print(vt_data_first500.head())
+print(vt_data_next500.head())
+
+# Load csv with no additional arguments
+data = pd.read_csv("vt_tax_data_2016.csv")
+
+# Print the data types
+print(data.dtypes)
+
+# Create dict specifying data types for agi_stub and zipcode
+data_types = {"agi_stub": "category",
+			  "zipcode": str}
+
+# Load csv using dtype to set correct data types
+data = pd.read_csv("vt_tax_data_2016.csv", dtype=data_types)
+
+# Print data types of resulting frame
+print(data.dtypes.head())
