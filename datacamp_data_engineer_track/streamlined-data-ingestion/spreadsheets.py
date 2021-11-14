@@ -63,3 +63,26 @@ for df in responses.values():
 counts = all_responses.groupby("EmploymentStatus").EmploymentStatus.count()
 counts.plot.barh()
 plt.show()
+
+# Load the data
+survey_data = pd.read_excel("fcc_survey_subset.xlsx")
+
+# Count NA values in each column
+print(survey_data.isna().sum())
+
+# Set dtype to load appropriate column(s) as Boolean data
+survey_data = pd.read_excel("fcc_survey_subset.xlsx",
+                            dtype={"HasDebt": bool})
+
+# View financial burdens by Boolean group
+print(survey_data.groupby("HasDebt").sum())
+
+# Load file with Yes as a True value and No as a False value
+survey_subset = pd.read_excel("fcc_survey_yn_data.xlsx",
+                              dtype={"HasDebt": bool,
+                              "AttendedBootCampYesNo": bool},
+                              true_values=['Yes'],
+                              false_values=['No'])
+
+# View the data
+print(survey_subset.head())
