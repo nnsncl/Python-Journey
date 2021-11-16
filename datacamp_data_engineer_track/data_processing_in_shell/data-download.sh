@@ -12,4 +12,4 @@ cat url_list.txt
 wget --limit-rate=2500K -i url_list.txt
 
 # Take a look at all files downloaded
-ls
+ls data
