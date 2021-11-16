@@ -1,0 +1,25 @@
+Date,Tooth
+
+==> seasonal/spring.csv <==
+Date,Tooth
+
+==> seasonal/summer.csv <==
+Date,Tooth
+
+==> seasonal/winter.csv <==
+Date,Tooth
+$ nano dates.sh
+$ bash dates.sh
+Date
+2017-01-05
+2017-01-17
+2017-01-18
+2017-02-01
+2017-02-22
+2017-03-10
+2017-03-13
+2017-04-30
+2017-05-02
+2017-05-10
+2017-05-19
+2017-05-25
