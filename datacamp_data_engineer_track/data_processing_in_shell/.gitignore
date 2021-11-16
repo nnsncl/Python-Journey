@@ -1,4 +1,9 @@
+# File types
 *.zip
 *.txt
 *.pdf
 *.csv
+
+# Misc 
+data
+__MACOSX
