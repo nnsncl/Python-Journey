@@ -3,3 +3,6 @@ csvstack SpotifyData_PopularityRank6.csv SpotifyData_PopularityRank7.csv > Spoti
 
 # Preview the newly created file 
 csvlook SpotifyPopularity.csv
+
+# If csvlook succeeds, then run csvstat 
+csvlook Spotify_Popularity.csv && csvstat Spotify_Popularity.csv
