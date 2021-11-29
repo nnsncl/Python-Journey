@@ -14,3 +14,11 @@ echo ${capital_cities[@]}
 
 # Print out the array length
 echo ${#capital_cities[@]}
+
+# Create empty associative array
+declare -A model_metrics
+
+# Add the key-value pairs
+model_metrics[model_accuracy]=98
+model_metrics[model_name]="knn"
+model_metrics[model_f1]=0.82
