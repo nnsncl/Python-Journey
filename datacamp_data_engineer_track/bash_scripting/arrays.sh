@@ -5,3 +5,12 @@ declare -a capital_cities
 capital_cities[0]="Sydney"
 capital_cities[1]="Sydney"
 capital_cities+=("Paris")
+
+# The array has been created for you
+capital_cities=("Sydney" "Albany" "Paris")
+
+# Print out the entire array
+echo ${capital_cities[@]}
+
+# Print out the array length
+echo ${#capital_cities[@]}
